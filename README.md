@@ -6,18 +6,38 @@ A modern college attendance management system built with React, TypeScript, and 
 
 ### Prerequisites
 
-- Node.js 18+ (recommended to use [nvm](https://github.com/nvm-sh/nvm))
-- npm or yarn package manager
+- Node.js 18+ (automatically installed by setup script)
+- npm package manager
 
 ### Local Development Setup
 
 1. **Clone the repository**
    ```bash
    git clone <YOUR_GIT_URL>
-   cd college-attend-smart-main
+   cd college-attend-smart
    ```
 
-2. **Install Node.js (if not already installed)**
+2. **Run the automated setup**
+   ```bash
+   ./setup.sh
+   ```
+   This script will:
+   - Install Node.js (via nvm) if not present
+   - Install all project dependencies
+   - Set up environment variables
+
+3. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+
+   The application will be available at `http://localhost:8080`
+
+### Manual Setup (Alternative)
+
+If you prefer manual setup:
+
+1. **Install Node.js**
    ```bash
    # Using nvm (recommended)
    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
@@ -26,39 +46,36 @@ A modern college attendance management system built with React, TypeScript, and 
    nvm use --lts
    ```
 
-3. **Install dependencies**
+2. **Install dependencies**
    ```bash
    npm install
-   # or
-   yarn install
    ```
 
-4. **Set up environment variables**
+3. **Set up environment variables**
    ```bash
    cp .env.example .env.local
    ```
-   Edit `.env.local` with your Supabase credentials if needed.
 
-5. **Start the development server**
+4. **Start development server**
    ```bash
    npm run dev
-   # or
-   yarn dev
    ```
-
-   The application will be available at `http://localhost:8080`
 
 ### Build for Production
 
 ```bash
 npm run build
-# or
-yarn build
 ```
 
 ## 🌐 Deploying to Vercel
 
-### Option 1: Deploy via Vercel CLI
+### Option 1: One-Command Deploy
+
+```bash
+npm run deploy:vercel
+```
+
+### Option 2: Deploy via Vercel CLI
 
 1. **Install Vercel CLI**
    ```bash
@@ -69,9 +86,8 @@ yarn build
    ```bash
    vercel
    ```
-   Follow the prompts to deploy your project.
 
-### Option 2: Deploy via GitHub Integration
+### Option 3: Deploy via GitHub Integration (Recommended)
 
 1. **Push your code to GitHub**
    ```bash
@@ -84,19 +100,16 @@ yarn build
    - Go to [vercel.com](https://vercel.com)
    - Click "New Project"
    - Import your GitHub repository
-   - Configure environment variables:
-     - `VITE_SUPABASE_URL`: Your Supabase project URL
-     - `VITE_SUPABASE_ANON_KEY`: Your Supabase anon key
+   - Vercel will auto-detect it as a Vite project
 
-3. **Deploy**
-   Vercel will automatically build and deploy your project.
+3. **Configure Environment Variables (Optional)**
+   In Vercel dashboard, add your own Supabase credentials:
+   - `VITE_SUPABASE_URL`: Your Supabase project URL
+   - `VITE_SUPABASE_ANON_KEY`: Your Supabase anon key
 
-### Environment Variables for Production
-
-In your Vercel dashboard, add these environment variables:
-
-- `VITE_SUPABASE_URL`: Your Supabase project URL
-- `VITE_SUPABASE_ANON_KEY`: Your Supabase anonymous key
+4. **Deploy**
+   - Vercel will automatically build and deploy
+   - Future pushes to main branch will auto-deploy
 
 ## 🛠️ Technologies Used
 
